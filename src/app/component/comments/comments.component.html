@@ -17,7 +17,7 @@
     <app-comment matListItemTitle [comment]="comment"></app-comment>
     <app-relative-time matListItemMeta [time]="comment?.dateAdd | dateTime"></app-relative-time>
     <div matListItemMeta>
-      <button mat-mini-fab (click)="editComment = comment" aria-label="Edit" color="primary"><mat-icon>edit</mat-icon></button>
+      <button mat-mini-fab (click)="editComment = { comment: comment.comment, id: comment.id }" aria-label="Edit" color="primary"><mat-icon>edit</mat-icon></button>
       <button mat-mini-fab (click)="deleteComment(comment)" aria-label="Delete" color="warn"><mat-icon>delete</mat-icon></button>
     </div>
   </mat-list-item>

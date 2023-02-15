@@ -37,7 +37,7 @@ export class CommentsComponent {
     if (this.editComment.id) {
       this.commentsService.modifyComment(this.editComment).subscribe({
         next: comment => {
-          this.comments.splice(this.comments.indexOf(this.editComment), 1);
+          this.comments.splice(this.comments.findIndex(listComment => listComment.id === this.editComment.id), 1);
           this.comments.push(comment);
           this.afterCommentAction();
         },
