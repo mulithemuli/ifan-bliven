@@ -12,7 +12,7 @@
     <button mat-icon-button type="button" (click)="sort('desc')" aria-label="Sort newest first" color="accent"><mat-icon>arrow_downward</mat-icon></button>
     <button mat-icon-button type="button" (click)="sort('asc')" aria-label="Sort oldest first" color="accent"><mat-icon>arrow_upward</mat-icon></button>
   </div>
-  <mat-list-item *ngFor="let comment of comments">
+  <mat-list-item *ngFor="let comment of comments" [class.selected]="comment.id === editComment.id">
     <mat-icon matListItemIcon>speaker_notes</mat-icon>
     <app-comment matListItemTitle [comment]="comment"></app-comment>
     <app-relative-time matListItemMeta [time]="comment?.dateAdd | dateTime"></app-relative-time>

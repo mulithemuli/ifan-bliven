@@ -47,6 +47,10 @@ mat-form-field {
   width: 100%;
 }
 
+mat-list-item.selected {
+  background-color: mat.get-color-from-palette($ifan-bliven-accent, 100);
+}
+
 .page-container {
   max-width: 1200px;
   margin: 0 auto;
