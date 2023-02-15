@@ -1,0 +1,25 @@
+<form (ngSubmit)="saveComment()">
+  <mat-form-field appearance="fill">
+    <mat-label>Comment</mat-label>
+    <textarea matInput name="comment" [(ngModel)]="editComment.comment"></textarea>
+    <button mat-icon-button matSuffix type="button" (click)="saveComment()" aria-label="Save" color="primary"><mat-icon>save</mat-icon></button>
+    <button mat-icon-button matSuffix type="button" (click)="editComment = {comment: ''}" aria-label="Rollback" color="accent" *ngIf="editComment.comment !== ''"><mat-icon>undo</mat-icon></button>
+    <button mat-icon-button matSuffix type="button" (click)="deleteComment()" *ngIf="editComment.id" aria-label="Delete" color="warn"><mat-icon>delete</mat-icon></button>
+  </mat-form-field>
+</form>
+<mat-list>
+  <div mat-subheader>
+    <button mat-icon-button type="button" (click)="sort('desc')" aria-label="Sort newest first" color="accent"><mat-icon>arrow_downward</mat-icon></button>
+    <button mat-icon-button type="button" (click)="sort('asc')" aria-label="Sort oldest first" color="accent"><mat-icon>arrow_upward</mat-icon></button>
+  </div>
+  <mat-list-item *ngFor="let comment of comments">
+    <mat-icon matListItemIcon>speaker_notes</mat-icon>
+    <app-comment matListItemTitle [comment]="comment"></app-comment>
+    <app-relative-time matListItemMeta [time]="comment?.dateAdd | dateTime"></app-relative-time>
+    <div matListItemMeta>
+      <button mat-mini-fab (click)="editComment = comment" aria-label="Edit" color="primary"><mat-icon>edit</mat-icon></button>
+      <button mat-mini-fab (click)="deleteComment(comment)" aria-label="Delete" color="warn"><mat-icon>delete</mat-icon></button>
+    </div>
+  </mat-list-item>
+  <app-comment></app-comment>
+</mat-list>
