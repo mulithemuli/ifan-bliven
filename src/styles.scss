@@ -28,10 +28,22 @@ $ifan-bliven-theme: mat.define-light-theme((
   )
 ));
 
+$ifan-bliven-theme-dark: mat.define-dark-theme((
+  color: (
+    primary: mat.define-palette(mat.$blue-gray-palette, 700),
+    accent: mat.define-palette(mat.$grey-palette, 500),
+    warn: $ifan-bliven-warn
+  )
+));
+
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
 // that you are using.
 @include mat.all-component-themes($ifan-bliven-theme);
+
+.dark-theme {
+  @include mat.all-component-colors($ifan-bliven-theme-dark);
+}
 
 /* You can add global styles to this file, and also import other style files */
 
@@ -55,7 +67,7 @@ mat-list-item {
   }
 
   &.selected {
-    background-color: mat.get-color-from-palette($ifan-bliven-accent, 100);
+    background-color: mat.get-color-from-palette($ifan-bliven-primary, 100);
   }
 
   button {
@@ -63,8 +75,22 @@ mat-list-item {
   }
 }
 
-
 .page-container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+
+  .title-bar {
+    display: flex;
+
+    h1 {
+      flex-grow: 1;
+    }
+
+    nav {
+      flex-wrap: wrap;
+      display: flex;
+      align-content: center;
+    }
+  }
 }

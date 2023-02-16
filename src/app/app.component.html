@@ -1,7 +1,12 @@
 <header>
   <mat-toolbar class="mat-elevation-z8" color="primary">
     <div class="page-container">
-      <h1>Angular Comment Demo</h1>
+      <div class="title-bar">
+        <h1>Angular Comment Demo</h1>
+        <nav>
+          <button mat-icon-button [attr.aria-label]="'Manually change theme to ' + oppositeMode() + ' mode'" (click)="changeMode()"><mat-icon>{{modeIcon}}</mat-icon></button>
+        </nav>
+      </div>
     </div>
   </mat-toolbar>
 </header>
